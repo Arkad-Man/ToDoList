@@ -1,74 +1,72 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import NewTask from './newTask';
 import './App.css';
 
 class App extends Component {
 
   constructor(props) {
-      super();
+    super(props);
 
-      this.state = {
+    this.taskIndex = 1;
+
+    this.state = {
+      tasks: [
+        {
+          title: 'Hello World',
+          done: false,
+          id: 0
+        }
+      ]
+    };
+
+  }
+
+  createNewTask(event) {
+    if (event.key === 'Enter') {
+      this.setState({
         tasks: [
-          {
-            title: 'Hello World',
-            done: false
+          ...this.state.tasks, {
+            title: event.currentTarget.value,
+            done: false,
+            id: this.taskIndex
           }
         ]
-      };
-
-    }
-
-    createNewTask(event) {
-      if(event.key === 'Enter') {
-        this.setState({
-          tasks: [...this.state.tasks, {title: event.currentTarget.value, done: false}]
-        });
-        event.currentTarget.value = '';
-      }
-    }
-
-    delTask(task, event) {
-      this.setState({
-        tasks: this.state.tasks.filter((item) => {
-          return item !== task;
-        })
       });
+      event.currentTarget.value = '';
+      this.taskIndex++;
     }
+  }
 
-    toggleDone(task, event) {
-      task.done = !task.done;
-      this.setState({
-        tasks: this.state.tasks
-      });
-    }
+  delTask(taskID) {
+    let reTasks = this.state.tasks.filter((item) => {
+      return item.id !== taskID;
+    });
+    this.setState({
+      tasks: reTasks
+    });
+  }
 
-    render() {
-      return (
-        <div className="App">
-          <header className="App-header">
-            <h1 className="App-header__title">ToDo List</h1>
-            <div className="App-header__content">
-              <input onKeyPress={this.createNewTask.bind(this)} className="App-content__input" placeholder="Enter a new task" />
-              <button className="App-content__button">Add Task</button>
-            </div>
-          </header>
-
-          <ul>
-            {
-                this.state.tasks.map((task) => {
-                  return <li className={task.done ? 'newTask done' : 'newTask'} >
-                    <input onClick={this.toggleDone.bind(this, task)} type="checkbox" />
-                    {task.title}
-                    <span onClick={this.delTask.bind(this, task)} className="close-btn">x</span></li>
-                })
-            }
-          </ul>
-
-          <footer className="App-footer">
-
-          </footer>
+  render() {
+    return (<div className="App">
+      <header className="App-header">
+        <h1 className="App-header__title">ToDo List</h1>
+        <div className="App-header__content">
+          <input onKeyPress={this.createNewTask.bind(this)} className="App-content__input" placeholder="Enter a new task"/>
+          <button className="App-content__button">Add Task</button>
         </div>
-      );
-    }
+      </header>
+
+      <ul>
+        {
+          this.state.tasks.map((task) => {
+            return <NewTask task={task} delTaskCallback={this.delTask.bind(this)} key={task.id}/>
+          })
+        }
+      </ul>
+
+      <footer className="App-footer"></footer>
+    </div>);
+  }
 }
 
 export default App;
