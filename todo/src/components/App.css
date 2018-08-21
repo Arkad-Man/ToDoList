@@ -1,5 +1,5 @@
 .App {
-  width: 80%;
+  width: 90%;
   height: auto;
   margin: 0 auto;
 }
@@ -11,8 +11,9 @@
   text-align: center;
   background-color: #3e344d;
   height: 7rem;
-  padding: 20px 15px;
+  padding: 25px 15px 20px 15px;
   border-bottom: 1.5px solid #09a3c1;
+  border-radius: 7px 7px 0 0;
 }
 
 .App-header__title {
@@ -48,6 +49,7 @@
   color: #09a3c1;
   outline: none;
   border: none;
+  font-weight: bold;
   transition: ease all 0.3s;
 }
 
@@ -56,8 +58,18 @@
   color: #035c6e;
 }
 
+.newTask{
+  display: flex;
+  justify-content: space-between;
+}
+
+.newTask.done{
+  text-decoration: line-through;
+}
+
 .App-footer{
   height: 2rem;
   background-color: #3e344d;
   border-top: 1.5px solid #09a3c1;
+  border-radius: 0 0 7px 7px;
 }
