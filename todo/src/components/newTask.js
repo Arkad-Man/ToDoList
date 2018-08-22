@@ -23,19 +23,18 @@ class NewTask extends Component {
       done: !this.state.newTask.done
     };
 
-    this.setState({
-      newTask: reNewTask
-    });
+    this.setState({newTask: reNewTask});
   }
 
   render() {
-    return (<li className={this.state.newTask.done
+    return (<li onClick={this.toggleDone.bind(this)} checked={this.state.newTask.done} className={this.state.newTask.done
         ? 'newTask done'
-        : 'newTask'}>
-      <input onClick={this.toggleDone.bind(this)} checked={this.state.newTask.done} type="checkbox"/> {this.state.newTask.title}
-      <span onClick={this.delTask.bind(this)} className="close-btn">x</span>
+        : 'newTask'}>{this.state.newTask.title}
+      <span onClick={this.delTask.bind(this)} className="newTask-close__btn">&times;</span>
     </li>);
   }
 }
 
 export default NewTask;
+
+// <input onClick={this.toggleDone.bind(this)} checked={this.state.newTask.done} type="checkbox" className="newTask-checkbox"/> {this.state.newTask.title}

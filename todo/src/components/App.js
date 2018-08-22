@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       tasks: [
         {
-          title: 'Hello World',
+          title: 'Hello World!',
           done: false,
           id: 0
         }
@@ -41,9 +41,7 @@ class App extends Component {
     let reTasks = this.state.tasks.filter((item) => {
       return item.id !== taskID;
     });
-    this.setState({
-      tasks: reTasks
-    });
+    this.setState({tasks: reTasks});
   }
 
   render() {
@@ -56,7 +54,7 @@ class App extends Component {
         </div>
       </header>
 
-      <ul>
+      <ul className="taskList">
         {
           this.state.tasks.map((task) => {
             return <NewTask task={task} delTaskCallback={this.delTask.bind(this)} key={task.id}/>

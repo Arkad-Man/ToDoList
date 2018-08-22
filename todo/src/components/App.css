@@ -5,14 +5,21 @@
 }
 
 .App-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   text-align: center;
   background-color: #3e344d;
   height: 7rem;
   padding: 25px 15px 20px 15px;
-  border-bottom: 1.5px solid #09a3c1;
+  border-bottom: 2.5px solid #09a3c1;
   border-radius: 7px 7px 0 0;
 }
 
@@ -23,34 +30,42 @@
 }
 
 .App-header__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   height: 2.5rem;
   margin-top: 10px;
 }
 
 .App-content__input{
   width: 75%;
-  padding: 0 10px;
+  padding: 5px 10px;
   background-color: #453a55;
   outline: none;
   border: none;
   color: #6be7ff;
+  font-size: 1rem;
 }
 
 .App-content__input:focus{
-  background-color: #453a55;
+  background-color: #4a3e5c;
   border-bottom: 1px solid #09a3c1;
 }
 
 .App-content__button{
   width: 20%;
+  /* padding: 20px 30px; */
   background-color: #035c6e;
   color: #09a3c1;
   outline: none;
   border: none;
   font-weight: bold;
+  font-size: 0.8rem;
+  -webkit-transition: ease all 0.3s;
   transition: ease all 0.3s;
+  cursor: pointer;
 }
 
 .App-content__button:hover{
@@ -58,18 +73,79 @@
   color: #035c6e;
 }
 
+.taskList{
+	margin: 0 auto;
+	list-style: none;
+	width: 98%;
+}
+
 .newTask{
-  display: flex;
-  justify-content: space-between;
+	cursor: pointer;
+	position: relative;
+	padding: 10px 8px 10px 40px;
+	background-color: #b6abc6;
+	font-size: 1rem;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+
+.newTask:nth-child(odd){
+	background-color: #a79aba;
+}
+
+.newTask:hover{
+	background-color: #d8cfe6;
+	-webkit-transform: scale(1.005);
+	        transform: scale(1.005);
 }
 
 .newTask.done{
-  text-decoration: line-through;
+	background-color: #74658a;
+	color: #fff;
+	text-decoration: line-through;
+}
+
+.newTask.done:hover{
+  background-color: #66587a;
+}
+
+.newTask.done::before{
+	content: '';
+	position: absolute;
+	border-color: #09a3c1;
+	border-style: solid;
+	border-width: 0 2px 2px 0;
+	top: 7px;
+	left: 16px;
+	-webkit-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	height: 15px;
+	width: 6px;
+}
+
+.newTask-close__btn{
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 7px 14px;
+  font-size: 1.3rem;
+  color: #0794b0;
+}
+
+.newTask-close__btn:hover{
+	background-color: #035c6e;
+	color: white;
+	-webkit-transition: ease all 0.5s;
+	transition: ease all 0.5s;
 }
 
 .App-footer{
   height: 2rem;
   background-color: #3e344d;
-  border-top: 1.5px solid #09a3c1;
+  border-top: 2.5px solid #09a3c1;
   border-radius: 0 0 7px 7px;
 }
