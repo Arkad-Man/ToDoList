@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NewTask from './newTask';
+import List from './List';
 import './App.css';
 
 class App extends Component {
@@ -10,6 +10,7 @@ class App extends Component {
     this.taskIndex = 1;
 
     this.state = {
+      inpVal: '',
       tasks: [
         {
           title: 'Hello World!',
@@ -21,23 +22,26 @@ class App extends Component {
 
   }
 
-  createNewTask(event) {
-    if (event.key === 'Enter') {
-      this.setState({
-        tasks: [
-          ...this.state.tasks, {
-            title: event.currentTarget.value,
-            done: false,
-            id: this.taskIndex
-          }
-        ]
-      });
-      event.currentTarget.value = '';
-      this.taskIndex++;
-    }
+  onChange = (event) => {
+    this.setState({inpVal: event.target.value});
   }
 
-  delTask(taskID) {
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.setState({
+      inpVal: '',
+      tasks: [
+        ...this.state.tasks, {
+          title: this.state.inpVal,
+          done: false,
+          id: this.taskIndex
+        }
+      ]
+    });
+    this.taskIndex++;
+  }
+
+  delTask = (taskID) => {
     let reTasks = this.state.tasks.filter((item) => {
       return item.id !== taskID;
     });
@@ -48,19 +52,13 @@ class App extends Component {
     return (<div className="App">
       <header className="App-header">
         <h1 className="App-header__title">ToDo List</h1>
-        <div className="App-header__content">
-          <input onKeyPress={this.createNewTask.bind(this)} className="App-content__input" placeholder="Enter a new task"/>
-          <button className="App-content__button">Add Task</button>
-        </div>
+        <form onSubmit={this.onSubmit} className="App-header__content">
+          <input value={this.state.inpVal} onChange={this.onChange} className="App-content__input" placeholder="Enter a new task"/>
+          <button className="App-content__button" type="submit">Add Task</button>
+        </form>
       </header>
 
-      <ul className="taskList">
-        {
-          this.state.tasks.map((task) => {
-            return <NewTask task={task} delTaskCallback={this.delTask.bind(this)} key={task.id}/>
-          })
-        }
-      </ul>
+      <List tasks={this.state.tasks} delTask={this.delTask}/>
 
       <footer className="App-footer"></footer>
     </div>);

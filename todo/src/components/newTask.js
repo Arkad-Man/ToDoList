@@ -36,5 +36,3 @@ class NewTask extends Component {
 }
 
 export default NewTask;
-
-// <input onClick={this.toggleDone.bind(this)} checked={this.state.newTask.done} type="checkbox" className="newTask-checkbox"/> {this.state.newTask.title}
