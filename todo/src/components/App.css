@@ -1,4 +1,4 @@
-.App {
+.ToDo {
   width: 90%;
   height: auto;
   margin: 0 auto;
@@ -29,7 +29,7 @@
   color: #056d82;
 }
 
-.App-header__content {
+.App-header__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -109,6 +109,10 @@
 	text-decoration: line-through;
 }
 
+.newTask.done:nth-child(odd){
+  background-color: #7a6a91;
+}
+
 .newTask.done:hover{
   background-color: #66587a;
 }
@@ -133,7 +137,7 @@
 	top: 0;
 	padding: 7px 14px;
   font-size: 1.3rem;
-  color: #0794b0;
+  color: #047990;
 }
 
 .newTask-close__btn:hover{
@@ -144,8 +148,30 @@
 }
 
 .App-footer{
-  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 3.5rem;
   background-color: #3e344d;
   border-top: 2.5px solid #09a3c1;
   border-radius: 0 0 7px 7px;
+}
+
+.App-footer-btn{
+  border: none;
+  outline: none;
+  height: 35%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #035c6e;
+  background-color: #3e344d;
+  cursor: pointer;
+}
+
+.App-footer-btn:hover{
+  color: #047990;
+}
+
+.App-footer-btn.active{
+  color: #09a3c1;
 }

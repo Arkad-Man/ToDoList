@@ -9,12 +9,12 @@ class NewTask extends Component {
       newTask: props.task
     };
 
-    this.deleteTask = props.delTaskCallback;
+    this.removeTask = props.delTaskCallback;
 
   }
 
-  delTask(event) {
-    this.deleteTask(this.state.newTask.id);
+  deleteTask(event) {
+    this.removeTask(this.state.newTask.id);
   }
 
   toggleDone(event) {
@@ -22,7 +22,6 @@ class NewTask extends Component {
       ...this.state.newTask,
       done: !this.state.newTask.done
     };
-
     this.setState({newTask: reNewTask});
   }
 
@@ -30,7 +29,7 @@ class NewTask extends Component {
     return (<li onClick={this.toggleDone.bind(this)} checked={this.state.newTask.done} className={this.state.newTask.done
         ? 'newTask done'
         : 'newTask'}>{this.state.newTask.title}
-      <span onClick={this.delTask.bind(this)} className="newTask-close__btn">&times;</span>
+      <span onClick={this.deleteTask.bind(this)} className="newTask-close__btn">&times;</span>
     </li>);
   }
 }
