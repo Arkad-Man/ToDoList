@@ -28,6 +28,7 @@ class App extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
+    if(this.state.inpVal === '') return;
     this.setState({
       inpVal: '',
       tasks: [

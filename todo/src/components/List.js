@@ -12,19 +12,4 @@ const List = props => (
 
 );
 
-// class List extends Component {
-//   render() {
-//     console.log('items', this.props.items);
-//     return(
-//     <ul>
-//     {this.props.items.map((item, index) =>
-//         <NewTask task={item} delTaskCallback={this.delTask.bind(this)} key={item.id}/>
-//       )}
-//     </ul>
-//     );
-//   }
-// }
-
-
-
 export default List;
