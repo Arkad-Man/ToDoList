@@ -1,37 +1,54 @@
 import React, {Component} from 'react';
 
 class NewTask extends Component {
-
   constructor(props) {
     super(props);
 
-    this.state = {
-      newTask: props.task
+    this.checkTask = props.compliteTaskCallback;
+    this.removeTask = props.deleteTaskCallback;
+  }
+
+  compliteTask(event) {
+    let complTask = {
+      ...this.props.task
     };
-
-    this.removeTask = props.delTaskCallback;
-
+    complTask.done = !complTask.done;
+    this.checkTask(complTask);
   }
 
   deleteTask(event) {
-    this.removeTask(this.state.newTask.id);
-  }
-
-  toggleDone(event) {
-    let reNewTask = {
-      ...this.state.newTask,
-      done: !this.state.newTask.done
-    };
-    this.setState({newTask: reNewTask});
+    this.removeTask(this.props.task.id);
+    console.log(this.props.task.id);
   }
 
   render() {
-    return (<li onClick={this.toggleDone.bind(this)} checked={this.state.newTask.done} className={this.state.newTask.done
+    return (<li onClick={this.compliteTask.bind(this)} className={this.props.task.done
         ? 'newTask done'
-        : 'newTask'}>{this.state.newTask.title}
+        : 'newTask'}>{this.props.task.title}
       <span onClick={this.deleteTask.bind(this)} className="newTask-close__btn">&times;</span>
     </li>);
   }
 }
 
 export default NewTask;
+
+
+// this.state = {
+//   newTask: props.task
+// };
+
+// compliteTask(event) {
+//   let complTask = {
+//     ...this.props.task,
+//     done: !this.props.task.done
+//   };
+//   this.checkTask(complTask);
+// }
+
+// render() {
+//   return (<li onClick={this.compliteTask.bind(this)} checked={this.state.newTask.done} className={this.state.newTask.done
+//       ? 'newTask done'
+//       : 'newTask'}>{this.state.newTask.title}
+//     <span onClick={this.deleteTask.bind(this)} className="newTask-close__btn">&times;</span>
+//   </li>);
+// }

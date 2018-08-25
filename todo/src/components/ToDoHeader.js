@@ -17,14 +17,15 @@ class Header extends Component {
 
   createTask = (event) => {
     event.preventDefault();
-    if (this.state.inpVal === '') return;
-    const protoTasks = {
+    if (this.state.inpVal === '')
+      return;
+    const protoTask = {
       title: this.state.inpVal,
       done: false,
       id: this.taskIndex
     };
-    this.state.inpVal = '';
-    this.props.createTask(protoTasks);
+    this.setState({inpVal: ''});
+    this.props.createTask(protoTask);
     this.taskIndex++;
   }
 
