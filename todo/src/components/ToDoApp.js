@@ -16,9 +16,13 @@ class ToDo extends Component {
           id: 0
         }
       ],
+      inputVal: '',
       filter: 'all'
     };
+  }
 
+  inputTextReceiver = (inputText) => {
+    this.setState({inputVal: inputText});
   }
 
   tasksFilter = (filterVal) => {
@@ -26,11 +30,11 @@ class ToDo extends Component {
   };
 
   createTask = (task) => {
+    if (this.state.inputVal === '')
+      return;
     this.setState({
-      tasks: [
-        ...this.state.tasks,
-        task
-      ]
+      tasks: [...this.state.tasks, task],
+      inputVal: ''
     });
   };
 
@@ -46,40 +50,40 @@ class ToDo extends Component {
   };
 
   deleteTask = (taskID) => {
-    // debugger;
     let removeTask = this.state.tasks.filter((item) => {
       return item.id !== taskID;
     });
-
-    // Прблема с setState! Если просто this.setState({tasks : removeTask}) то
-    //не рендерится новое состояние!!!
-
-    // console.log(removeTask);
-
-    this.setState(() => this.setState({tasks: removeTask}));
-
-    // console.log(this.state);
+    this.setState({tasks: removeTask});
   };
 
   render() {
     let {filter, tasks} = this.state;
     let filteredTasks = [];
 
-    if (filter === 'all')
-      filteredTasks = tasks;
-    if (filter === 'active')
-      filteredTasks = tasks.filter(task => !task.done);
-    if (filter === 'complited')
-      filteredTasks = tasks.filter(task => task.done);
+    if (filter === 'all') filteredTasks = tasks;
 
-    console.log(filteredTasks);
-    return (<div className="ToDo">
+    if (filter === 'active') filteredTasks = tasks.filter(task => !task.done);
 
-      <Header createTask={this.createTask}/>
-      <List tasks={filteredTasks} compliteTask={this.compliteTask} deleteTask={this.deleteTask}/>
-      <Footer tasks={tasks} filter={filter} tasksFilter={this.tasksFilter}/>
+    if (filter === 'complited') filteredTasks = tasks.filter(task => task.done);
 
-    </div>);
+    return (
+      <div className="ToDo">
+
+        <Header tasks={tasks}
+                inputVal={this.state.inputVal}
+                inputTextReceiver={this.inputTextReceiver}
+                createTask={this.createTask}/>
+
+        <List tasks={filteredTasks}
+              compliteTask={this.compliteTask}
+              deleteTask={this.deleteTask}/>
+
+        <Footer tasks={tasks}
+                filter={filter}
+                tasksFilter={this.tasksFilter}/>
+
+      </div>
+    );
   }
 }
 

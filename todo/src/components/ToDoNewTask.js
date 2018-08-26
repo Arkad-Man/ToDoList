@@ -1,54 +1,41 @@
 import React, {Component} from 'react';
 
 class NewTask extends Component {
-  constructor(props) {
-    super(props);
 
-    this.checkTask = props.compliteTaskCallback;
-    this.removeTask = props.deleteTaskCallback;
-  }
-
-  compliteTask(event) {
+  compliteTask = (event) => {
     let complTask = {
       ...this.props.task
     };
     complTask.done = !complTask.done;
-    this.checkTask(complTask);
+    this.props.compliteTaskCallback(complTask);
   }
 
-  deleteTask(event) {
-    this.removeTask(this.props.task.id);
-    console.log(this.props.task.id);
+  deleteTask = (event) => {
+    this.props.deleteTaskCallback(this.props.task.id);
   }
 
   render() {
-    return (<li onClick={this.compliteTask.bind(this)} className={this.props.task.done
-        ? 'newTask done'
-        : 'newTask'}>{this.props.task.title}
-      <span onClick={this.deleteTask.bind(this)} className="newTask-close__btn">&times;</span>
-    </li>);
+    return (
+      <li className={this.props.task.done
+          ? 'newTask done'
+          : 'newTask'}>
+
+            <span className={this.props.task.done
+                  ? 'taskCheckSumbol done'
+                  : 'taskCheckSumbol'}></span>
+
+            <input className="taskCheckArea"
+                   type='checkbox'
+                   onClick={this.compliteTask}/>
+
+            {this.props.task.title}
+
+            <span className="newTask-close__btn"
+                  onClick={this.deleteTask}>&times;</span>
+
+      </li>
+    );
   }
 }
 
 export default NewTask;
-
-
-// this.state = {
-//   newTask: props.task
-// };
-
-// compliteTask(event) {
-//   let complTask = {
-//     ...this.props.task,
-//     done: !this.props.task.done
-//   };
-//   this.checkTask(complTask);
-// }
-
-// render() {
-//   return (<li onClick={this.compliteTask.bind(this)} checked={this.state.newTask.done} className={this.state.newTask.done
-//       ? 'newTask done'
-//       : 'newTask'}>{this.state.newTask.title}
-//     <span onClick={this.deleteTask.bind(this)} className="newTask-close__btn">&times;</span>
-//   </li>);
-// }

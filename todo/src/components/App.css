@@ -46,7 +46,7 @@
   outline: none;
   border: none;
   color: #6be7ff;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .App-content__input:focus{
@@ -56,13 +56,12 @@
 
 .App-content__button{
   width: 20%;
-  /* padding: 20px 30px; */
   background-color: #035c6e;
   color: #09a3c1;
   outline: none;
   border: none;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.8em;
   -webkit-transition: ease all 0.3s;
   transition: ease all 0.3s;
   cursor: pointer;
@@ -80,11 +79,10 @@
 }
 
 .newTask{
-	cursor: pointer;
 	position: relative;
-	padding: 10px 8px 10px 40px;
+	padding: 10px 8px 10px 38px;
 	background-color: #b6abc6;
-	font-size: 1rem;
+	font-size: 1em;
 	-webkit-transition: 0.2s;
 	transition: 0.2s;
 	-webkit-user-select: none;
@@ -99,8 +97,8 @@
 
 .newTask:hover{
 	background-color: #d8cfe6;
-	-webkit-transform: scale(1.005);
-	        transform: scale(1.005);
+	-webkit-transform: scaleX(1.005);
+	        transform: scaleX(1.005);
 }
 
 .newTask.done{
@@ -117,18 +115,45 @@
   background-color: #66587a;
 }
 
-.newTask.done::before{
-	content: '';
-	position: absolute;
+.taskCheckArea{
+  position: absolute;
+  opacity: 0;
+  height: 1.6rem;
+  width: 1.6rem;
+  z-index: 3;
+  top: 7px;
+	left: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.taskCheckSumbol{
+  position: absolute;
+  top: 7.25px;
+  left: 5px;
+  outline: 2px solid #047990;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.taskCheckSumbol.done{
+  border-color: #09a3c1;
+  outline: 2px solid #09a3c1;
+}
+
+.taskCheckSumbol.done:before{
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 8px;
+  height: 15px;
+  width: 6px;
 	border-color: #09a3c1;
 	border-style: solid;
-	border-width: 0 2px 2px 0;
-	top: 7px;
-	left: 16px;
+	border-width: 0 2.2px 2.2px 0;
 	-webkit-transform: rotate(45deg);
 	        transform: rotate(45deg);
-	height: 15px;
-	width: 6px;
 }
 
 .newTask-close__btn{
@@ -136,8 +161,9 @@
 	right: 0;
 	top: 0;
 	padding: 7px 14px;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   color: #047990;
+  cursor: pointer;
 }
 
 .newTask-close__btn:hover{
@@ -148,8 +174,13 @@
 }
 
 .App-footer{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
   height: 3.5rem;
   background-color: #3e344d;
@@ -161,7 +192,7 @@
   border: none;
   outline: none;
   height: 35%;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: bold;
   color: #035c6e;
   background-color: #3e344d;

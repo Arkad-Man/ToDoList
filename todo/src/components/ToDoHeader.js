@@ -2,41 +2,45 @@ import React, {Component} from 'react';
 
 class Header extends Component {
   constructor(props) {
-    super(props);
+    super();
 
     this.taskIndex = 1;
-
-    this.state = {
-      inpVal: ''
-    }
   }
 
-  onChange = (event) => {
-    this.setState({inpVal: event.target.value});
+  inputMaker = (event) => {
+    this.props.inputTextReceiver(event.target.value);
   }
 
   createTask = (event) => {
     event.preventDefault();
-    if (this.state.inpVal === '')
-      return;
     const protoTask = {
-      title: this.state.inpVal,
+      title: this.props.inputVal,
       done: false,
       id: this.taskIndex
     };
-    this.setState({inpVal: ''});
     this.props.createTask(protoTask);
     this.taskIndex++;
   }
 
   render() {
-    return (<header className="App-header">
-      <h1 className="App-header__title">ToDo List</h1>
-      <form onSubmit={this.createTask.bind(this)} className="App-header__form">
-        <input value={this.state.inpVal} onChange={this.onChange} className="App-content__input" placeholder="Enter a new task"/>
-        <button className="App-content__button" type="submit">Add Task</button>
-      </form>
-    </header>);
+    return (
+      <header className="App-header">
+
+        <h1 className="App-header__title">ToDo List</h1>
+
+        <form onSubmit={this.createTask}
+              className="App-header__form">
+
+          <input value={this.props.inputVal}
+                 onChange={this.inputMaker}
+                 className="App-content__input"
+                 placeholder="Enter a new task"/>
+
+          <button className="App-content__button" type="submit">Add Task</button>
+
+        </form>
+      </header>
+    );
   }
 
 }
