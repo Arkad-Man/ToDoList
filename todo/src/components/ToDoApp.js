@@ -10,15 +10,19 @@ class ToDo extends Component {
 
     this.state = {
       tasks: [
-        {
-          title: 'Hello World!',
-          done: false,
-          id: 0
-        }
+        // {
+        //   title: 'Hello World!',
+        //   done: false,
+        //   id: 0
+        // }
       ],
       inputVal: '',
       filter: 'all'
     };
+  }
+
+  updateLocalStorage = (update) => {
+    localStorage.setItem("Tasks", JSON.stringify(update));
   }
 
   inputTextReceiver = (inputText) => {
@@ -32,10 +36,12 @@ class ToDo extends Component {
   createTask = (task) => {
     if (this.state.inputVal === '')
       return;
+      let updateTasks = [...this.state.tasks, task];
     this.setState({
-      tasks: [...this.state.tasks, task],
+      tasks: updateTasks,
       inputVal: ''
     });
+    this.updateLocalStorage(updateTasks);
   };
 
   compliteTask = (task) => {
@@ -47,6 +53,7 @@ class ToDo extends Component {
       }
     });
     this.setState({tasks: tasksIsDone});
+    this.updateLocalStorage(tasksIsDone);
   };
 
   deleteTask = (taskID) => {
@@ -54,6 +61,7 @@ class ToDo extends Component {
       return item.id !== taskID;
     });
     this.setState({tasks: removeTask});
+    this.updateLocalStorage(removeTask);
   };
 
   render() {

@@ -3,8 +3,6 @@ import React, {Component} from 'react';
 class Header extends Component {
   constructor(props) {
     super();
-
-    this.taskIndex = 1;
   }
 
   inputMaker = (event) => {
@@ -16,10 +14,9 @@ class Header extends Component {
     const protoTask = {
       title: this.props.inputVal,
       done: false,
-      id: this.taskIndex
+      id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
     };
     this.props.createTask(protoTask);
-    this.taskIndex++;
   }
 
   render() {
