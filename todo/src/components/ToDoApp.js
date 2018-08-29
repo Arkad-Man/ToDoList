@@ -9,13 +9,7 @@ class ToDo extends Component {
     super();
 
     this.state = {
-      tasks: [
-        // {
-        //   title: 'Hello World!',
-        //   done: false,
-        //   id: 0
-        // }
-      ],
+      tasks: JSON.parse(localStorage.getItem('Tasks')) || [],
       inputVal: '',
       filter: 'all'
     };
