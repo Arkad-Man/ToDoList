@@ -17,20 +17,20 @@ class NewTask extends Component {
   render() {
     return (
       <li className={this.props.task.done
-          ? 'newTask done'
-          : 'newTask'}>
+          ? 'appList__newTask done'
+          : 'appList__newTask'}>
 
             <span className={this.props.task.done
-                  ? 'taskCheckSumbol done'
-                  : 'taskCheckSumbol'}></span>
+                  ? 'newTask__checkSumbol done'
+                  : 'newTask__checkSumbol'}></span>
 
-            <input className="taskCheckArea"
+            <input className='newTask__checkArea'
                    type='checkbox'
                    onClick={this.compliteTask}/>
 
             {this.props.task.title}
 
-            <span className="newTask-close__btn"
+            <span className='newTask__btn_close'
                   onClick={this.deleteTask}>&times;</span>
 
       </li>

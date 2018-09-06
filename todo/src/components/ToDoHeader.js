@@ -21,21 +21,22 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="App-header">
+      <header className='appHeader'>
 
-        <h1 className="App-header__title">ToDo List</h1>
+        <h1 className='appHeader__headerTitle'>ToDo List</h1>
 
         <form onSubmit={this.createTask}
-              className="App-header__form">
+              className='appHeader__headerForm'>
 
           <input value={this.props.inputVal}
                  onChange={this.inputMaker}
-                 className="App-content__input"
-                 placeholder="Enter a new task"/>
+                 className='headerForm__input'
+                 placeholder='Enter a new task'/>
 
-          <button className="App-content__button" type="submit">Add Task</button>
+          <button className='headerForm__btn_add' type='submit'>Add Task</button>
 
         </form>
+
       </header>
     );
   }

@@ -16,7 +16,7 @@ class ToDo extends Component {
   }
 
   updateLocalStorage = (update) => {
-    localStorage.setItem("Tasks", JSON.stringify(update));
+    localStorage.setItem('Tasks', JSON.stringify(update));
   }
 
   inputTextReceiver = (inputText) => {
@@ -69,7 +69,7 @@ class ToDo extends Component {
     if (filter === 'complited') filteredTasks = tasks.filter(task => task.done);
 
     return (
-      <div className="ToDo">
+      <div className='ToDo'>
 
         <Header tasks={tasks}
                 inputVal={this.state.inputVal}

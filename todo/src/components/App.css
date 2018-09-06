@@ -4,7 +4,7 @@
   margin: 0 auto;
 }
 
-.App-header {
+.appHeader {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,19 +17,19 @@
           justify-content: space-between;
   text-align: center;
   background-color: #3e344d;
-  height: 7rem;
+  height: 6.5rem;
   padding: 25px 15px 20px 15px;
   border-bottom: 2.5px solid #09a3c1;
   border-radius: 7px 7px 0 0;
 }
 
-.App-header__title {
-  font-size: 2em;
+.appHeader__headerTitle {
+  font-size: 2.2em;
   letter-spacing: 0.05em;
   color: #056d82;
 }
 
-.App-header__form {
+.appHeader__headerForm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,7 +39,7 @@
   margin-top: 10px;
 }
 
-.App-content__input{
+.headerForm__input{
   width: 75%;
   padding: 5px 10px;
   background-color: #453a55;
@@ -49,12 +49,12 @@
   font-size: 1em;
 }
 
-.App-content__input:focus{
+.headerForm__input:focus{
   background-color: #4a3e5c;
   border-bottom: 1px solid #09a3c1;
 }
 
-.App-content__button{
+.headerForm__btn_add{
   width: 20%;
   background-color: #035c6e;
   color: #09a3c1;
@@ -67,18 +67,18 @@
   cursor: pointer;
 }
 
-.App-content__button:hover{
+.headerForm__btn_add:hover{
   background-color: #09a3c1;
   color: #035c6e;
 }
 
-.taskList{
+.appList{
 	margin: 0 auto;
 	list-style: none;
 	width: 98%;
 }
 
-.newTask{
+.appList__newTask{
 	position: relative;
 	padding: 10px 8px 10px 38px;
 	background-color: #b6abc6;
@@ -91,31 +91,31 @@
 	        user-select: none;
 }
 
-.newTask:nth-child(odd){
+.appList__newTask:nth-child(odd){
 	background-color: #a79aba;
 }
 
-.newTask:hover{
+.appList__newTask:hover{
 	background-color: #d8cfe6;
 	-webkit-transform: scaleX(1.005);
 	        transform: scaleX(1.005);
 }
 
-.newTask.done{
+.appList__newTask.done{
 	background-color: #74658a;
 	color: #fff;
 	text-decoration: line-through;
 }
 
-.newTask.done:nth-child(odd){
+.appList__newTask.done:nth-child(odd){
   background-color: #7a6a91;
 }
 
-.newTask.done:hover{
+.appList__newTask.done:hover{
   background-color: #66587a;
 }
 
-.taskCheckArea{
+.newTask__checkArea{
   position: absolute;
   opacity: 0;
   height: 1.6rem;
@@ -128,7 +128,7 @@
   border: none;
 }
 
-.taskCheckSumbol{
+.newTask__checkSumbol{
   position: absolute;
   top: 7.25px;
   left: 5px;
@@ -137,12 +137,12 @@
   width: 1.5rem;
 }
 
-.taskCheckSumbol.done{
+.newTask__checkSumbol.done{
   border-color: #09a3c1;
   outline: 2px solid #09a3c1;
 }
 
-.taskCheckSumbol.done:before{
+.newTask__checkSumbol.done:before{
   content: '';
   position: absolute;
   top: 1px;
@@ -156,7 +156,7 @@
 	        transform: rotate(45deg);
 }
 
-.newTask-close__btn{
+.newTask__btn_close{
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -166,14 +166,14 @@
   cursor: pointer;
 }
 
-.newTask-close__btn:hover{
+.newTask__btn_close:hover{
 	background-color: #035c6e;
 	color: white;
 	-webkit-transition: ease all 0.5s;
 	transition: ease all 0.5s;
 }
 
-.App-footer{
+.appFooter{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -188,7 +188,7 @@
   border-radius: 0 0 7px 7px;
 }
 
-.App-footer-btn{
+.appFooter__btn_state{
   border: none;
   outline: none;
   height: 35%;
@@ -199,10 +199,10 @@
   cursor: pointer;
 }
 
-.App-footer-btn:hover{
+.appFooter__btn_state:hover{
   color: #047990;
 }
 
-.App-footer-btn.active{
+.appFooter__btn_state.active{
   color: #09a3c1;
 }

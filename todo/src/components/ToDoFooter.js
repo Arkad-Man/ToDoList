@@ -10,23 +10,24 @@ class Footer extends Component {
     let {filter} = this.props;
 
     return (
-      <footer className="App-footer">
+      <footer className='appFooter'>
+      
         <button className={filter === 'active'
-                ? "App-footer-btn active"
-                : "App-footer-btn"}
-                data-value="active"
+                ? 'appFooter__btn_state active'
+                : 'appFooter__btn_state'}
+                data-value='active'
                 onClick={this.eventTasksFilter}>Active</button>
 
         <button className={filter === 'all'
-                ? "App-footer-btn active"
-                : "App-footer-btn"}
-                data-value="all"
+                ? 'appFooter__btn_state active'
+                : 'appFooter__btn_state'}
+                data-value='all'
                 onClick={this.eventTasksFilter}>All</button>
 
         <button className={filter === 'complited'
-                ? "App-footer-btn active"
-                : "App-footer-btn"}
-                data-value="complited"
+                ? 'appFooter__btn_state active'
+                : 'appFooter__btn_state'}
+                data-value='complited'
                 onClick={this.eventTasksFilter}>Complited</button>
 
       </footer>

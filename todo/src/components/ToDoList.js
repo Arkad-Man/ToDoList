@@ -2,7 +2,7 @@ import React from 'react';
 import NewTask from './ToDoNewTask';
 
 const List = (props) => (
-  <ul className="taskList">
+  <ul className='appList'>
 
     {props.tasks.map((task, index) =>
       <NewTask task={task}
