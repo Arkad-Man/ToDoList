@@ -7,11 +7,11 @@ class NewTask extends Component {
       ...this.props.task
     };
     complTask.done = !complTask.done;
-    this.props.compliteTaskCallback(complTask);
+    this.props.compliteTask(complTask);
   }
 
   deleteTask = (event) => {
-    this.props.deleteTaskCallback(this.props.task.id);
+    this.props.deleteTask(this.props.task.id);
   }
 
   render() {

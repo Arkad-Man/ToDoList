@@ -6,8 +6,8 @@ const List = (props) => (
 
     {props.tasks.map((task, index) =>
       <NewTask task={task}
-               compliteTaskCallback={props.compliteTask}
-               deleteTaskCallback={props.deleteTask}
+               compliteTask={props.compliteTask}
+               deleteTask={props.deleteTask}
                key={task.id}/>)
     }
 

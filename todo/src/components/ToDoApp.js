@@ -23,14 +23,29 @@ class ToDo extends Component {
     this.setState({inputVal: inputText});
   }
 
-  tasksFilter = (filterVal) => {
+  filterTasksState = (filterVal) => {
     this.setState({filter: filterVal});
   };
+
+  filteredTasks = () => {
+    let filteredTasks = [];
+
+    if (this.state.filter === 'all')
+      filteredTasks = this.state.tasks;
+
+    if (this.state.filter === 'active')
+      filteredTasks = this.state.tasks.filter(task => !task.done);
+
+    if (this.state.filter === 'complited')
+      filteredTasks = this.state.tasks.filter(task => task.done);
+
+    return filteredTasks;
+  }
 
   createTask = (task) => {
     if (this.state.inputVal === '')
       return;
-      let updateTasks = [...this.state.tasks, task];
+    let updateTasks = [...this.state.tasks, task];
     this.setState({
       tasks: updateTasks,
       inputVal: ''
@@ -60,13 +75,7 @@ class ToDo extends Component {
 
   render() {
     let {filter, tasks} = this.state;
-    let filteredTasks = [];
-
-    if (filter === 'all') filteredTasks = tasks;
-
-    if (filter === 'active') filteredTasks = tasks.filter(task => !task.done);
-
-    if (filter === 'complited') filteredTasks = tasks.filter(task => task.done);
+    let tasksFiltered = this.filteredTasks();
 
     return (
       <div className='ToDo'>
@@ -76,13 +85,13 @@ class ToDo extends Component {
                 inputTextReceiver={this.inputTextReceiver}
                 createTask={this.createTask}/>
 
-        <List tasks={filteredTasks}
+        <List tasks={tasksFiltered}
               compliteTask={this.compliteTask}
               deleteTask={this.deleteTask}/>
 
         <Footer tasks={tasks}
                 filter={filter}
-                tasksFilter={this.tasksFilter}/>
+                filterTasksState={this.filterTasksState}/>
 
       </div>
     );

@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
+import idGenerator from './idGenerator';
 
 class Header extends Component {
-  constructor(props) {
-    super();
-  }
 
   inputMaker = (event) => {
     this.props.inputTextReceiver(event.target.value);
@@ -14,7 +12,7 @@ class Header extends Component {
     const protoTask = {
       title: this.props.inputVal,
       done: false,
-      id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+      id: idGenerator()
     };
     this.props.createTask(protoTask);
   }
